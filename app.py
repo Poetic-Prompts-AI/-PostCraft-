@@ -53,41 +53,27 @@ def pipeline_criar_post(topico):
     rascunho = agente_redator(topico, plano)
     revisado = agente_revisor(topico, rascunho)
     return (
-        f"### 📅 Data: {data}",
-        f"### 🧠 Plano de Conteúdo\n{to_markdown(plano)}",
-        f"### ✍️ Rascunho Criado\n{to_markdown(rascunho)}",
-        f"### ✅ Revisão Final\n{to_markdown(revisado)}"
+        f"📅 **Data:** {data}",
+        f"\n🧠 **Plano de Conteúdo:**\n{to_markdown(plano)}",
+        f"\n✍️ **Seu Rascunho:**\n{to_markdown(rascunho)}",
+        f"\n✅ **Revisão Final:**\n{to_markdown(revisado)}"
     )
 
-custom_theme = gr.themes.Soft(
-    primary_hue="indigo",
-    secondary_hue="amber",
-    neutral_hue="gray"
-)
+custom_theme = gr.themes.Soft(primary_hue="indigo", secondary_hue="pink", neutral_hue="gray")
 
-with gr.Blocks(theme=custom_theme, css="""
-    .gr-button {
-        font-size: 16px !important;
-        padding: 0.75em 1.5em !important;
-        border-radius: 12px !important;
-    }
-    textarea, input {
-        font-size: 16px !important;
-    }
-""") as demo:
+with gr.Blocks(theme=custom_theme) as demo:
     gr.Markdown("""
-# 🎨 **PostCraft ✨**
-### Oficina criativa de conteúdo com IA generativa
+# 📱 InstaPost: Sua IA para posts incríveis! ✨
 
-Crie conteúdos prontos para Instagram com estratégia, redação envolvente e revisão com linguagem atual.
+Crie posts para o Instagram com estratégia, redação e revisão automática. Tudo com IA. Comece agora! 🚀
 """)
 
-    with gr.Tab("🚀 Criar Post Completo"):
+    with gr.Tab("🔥 Criar Post do Zero"):
         with gr.Row():
-            topico_input = gr.Textbox(label="🧩 Tópico do Post", placeholder="Ex: Como a IA pode transformar a educação")
-            gerar_btn = gr.Button("✨ Gerar Post Completo")
+            topico_input = gr.Textbox(label="Sobre o que você quer postar?", placeholder="Ex: IA na educação")
+            gerar_btn = gr.Button("Criar meu Post!")
 
-        with gr.Accordion("📅 Resultado", open=True):
+        with gr.Accordion("Ver Resultado", open=True):
             output_data = gr.Markdown()
             output_plano = gr.Markdown()
             output_rascunho = gr.Markdown()
@@ -99,36 +85,28 @@ Crie conteúdos prontos para Instagram com estratégia, redação envolvente e r
             outputs=[output_data, output_plano, output_rascunho, output_revisado]
         )
 
-    with gr.Tab("🧠 Apenas Planejamento"):
-        topico_plano = gr.Textbox(label="📌 Tópico", placeholder="Ex: Marketing Digital pós-Gemini")
-        btn_plano = gr.Button("Gerar Plano Criativo")
+    with gr.Tab("📋 Só o Planejamento"):
+        topico_plano = gr.Textbox(label="Tema do post", placeholder="Ex: Marketing Digital")
+        btn_plano = gr.Button("Gerar Plano!")
         saida_plano = gr.Markdown()
 
         btn_plano.click(fn=agente_planejador, inputs=topico_plano, outputs=saida_plano)
 
-    with gr.Tab("✍️ Apenas Redação"):
-        topico_redator = gr.Textbox(label="📌 Tópico")
-        plano_redator = gr.Textbox(label="📋 Plano de Post", lines=4, placeholder="Cole o plano aqui...")
-        btn_redator = gr.Button("Criar Rascunho")
+    with gr.Tab("📝 Só a Redação"):
+        topico_redator = gr.Textbox(label="Tema do post")
+        plano_redator = gr.Textbox(label="Cole o plano aqui", lines=4)
+        btn_redator = gr.Button("Criar Texto!")
         saida_redator = gr.Markdown()
 
-        btn_redator.click(
-            fn=agente_redator,
-            inputs=[topico_redator, plano_redator],
-            outputs=saida_redator
-        )
+        btn_redator.click(fn=agente_redator, inputs=[topico_redator, plano_redator], outputs=saida_redator)
 
-    with gr.Tab("✅ Apenas Revisão"):
-        topico_revisor = gr.Textbox(label="📌 Tópico")
-        rascunho_revisor = gr.Textbox(label="📝 Rascunho do Post", lines=5, placeholder="Cole o rascunho aqui...")
-        btn_revisor = gr.Button("Revisar Post")
+    with gr.Tab("🔍 Só a Revisão"):
+        topico_revisor = gr.Textbox(label="Tema do post")
+        rascunho_revisor = gr.Textbox(label="Cole o rascunho aqui", lines=5)
+        btn_revisor = gr.Button("Revisar Agora!")
         saida_revisor = gr.Markdown()
 
-        btn_revisor.click(
-            fn=agente_revisor,
-            inputs=[topico_revisor, rascunho_revisor],
-            outputs=saida_revisor
-        )
+        btn_revisor.click(fn=agente_revisor, inputs=[topico_revisor, rascunho_revisor], outputs=saida_revisor)
 
 if __name__ == "__main__":
     demo.launch()
