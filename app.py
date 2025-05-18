@@ -5,7 +5,7 @@ import gradio as gr
 import google.generativeai as genai
 
 # Configurar API
-os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY", "AIzaSyCJa54jrnfKHWzZoLAf39HopmLcJgUqCS8")
+os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY", "coloque sua chave aqui")
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 def to_markdown(text):
