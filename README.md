@@ -26,10 +26,10 @@
 
 A aplicação oferece uma interface amigável com abas:
 
-- 🔥 **Criar Post do Zero**  
-- 📋 **Só o Planejamento**  
-- 📝 **Só a Redação**  
-- 🔍 **Só a Revisão**
+- 🔥 **Criar post do zero**  
+- 📋 **Só o planejamento**  
+- 📝 **Só a redação**  
+- 🔍 **Só a revisão**
 
 Você pode escolher a etapa desejada ou gerar tudo automaticamente com um clique.
 
