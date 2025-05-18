@@ -1,4 +1,4 @@
-# 📸 PostCraft — IA para Criar Posts Brilhantes no Instagram! ✨
+# 📸 PostCraft — IA para criar posts brilhantes no instagram! ✨
 
 ![Preview da Aplicação](Appimage1.jpg)
 
@@ -6,7 +6,7 @@
 
 ---
 
-## ⚙️ Como Usar
+## ⚙️ Como usar
 
 1. **Configure sua API Key** do Google Gemini.
 
